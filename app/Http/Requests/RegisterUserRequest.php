@@ -31,7 +31,7 @@ class RegisterUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
             'interests' => 'required|array',
-            'interests.*' => 'string'
+            'interests.*' => 'string|exists:interests,name',
         ];
     }
 
