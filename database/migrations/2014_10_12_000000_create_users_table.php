@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->json('interests')->nullable();
             $table->boolean('verified')->default(false);
+            $table->string('verification_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

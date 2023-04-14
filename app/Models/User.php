@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password',
         'interests',
         'verified',
+        'verification_token'
     ];
 
     /**

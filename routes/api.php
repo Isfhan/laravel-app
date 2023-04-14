@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Protected routes that need access token
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    // Route for user profile
+    Route::get('/profile', [UserController::class, 'profile']);
 });
 
 // Route for registration API
 Route::post('/register', [UserController::class, 'register']);
+
+// Route for user verify
+Route::get('/verify/{token}', [VerificationController::class, 'verify']);
+
+// Route for login API
+Route::post('/login', [UserController::class, 'login']);
